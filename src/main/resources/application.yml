@@ -1,1 +1,7 @@
-spring.application.name=demo-hexagonal-architecture
+spring:
+  application:
+    name: hexagonal-arch-demo
+
+  server:
+    port: 8080
+

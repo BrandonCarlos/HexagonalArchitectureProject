@@ -1,12 +1,12 @@
 package com.example.demo_hexagonal_architecture.adapters.in.web;
 
+import com.example.demo_hexagonal_architecture.application.dto.NewMovieDto;
 import com.example.demo_hexagonal_architecture.application.usecases.MovieUseCase;
+import com.example.demo_hexagonal_architecture.domain.Movie;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/movies")
@@ -21,8 +21,18 @@ public class MoviesController {
     }
 
     @GetMapping("/{title}")
-    public ResponseEntity<?> getMovieByTitle(@PathVariable("title")) {
-        return ResponseEntity.ok(movieUseCase.getAllMovies());
+    public ResponseEntity<?> getMovieByTitle(@PathVariable("title") String title) {
+        return ResponseEntity.ok(movieUseCase.getMovieByTitle(title));
+    }
+
+    @PostMapping
+    public ResponseEntity<?> saveMovie (@RequestBody NewMovieDto newMovieDto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(movieUseCase.saveMovie(newMovieDto));
+    }
+
+    @PutMapping
+    public ResponseEntity<?> saveMovie (@RequestBody Movie movie) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(movieUseCase.updateMovie(movie));
     }
 
 }
