@@ -30,12 +30,12 @@ public class MoviesDaoAdapter implements MovieDAO {
 
     @Override
     public void saveMovie(NewMovieDto movie) {
-
+        moviesRepository.save(new MovieEntity(null, movie.title(),  movie.description(), movie.releaseDate(), movie.diretorName(), null));
     }
 
     @Override
     public void updateMovie(Movie newMovie) {
-
+        moviesRepository.save(new MovieEntity(newMovie.id(), newMovie.title(),  newMovie.description(), newMovie.releaseDate(), newMovie.diretorName(), null));
     }
 
     @Override
