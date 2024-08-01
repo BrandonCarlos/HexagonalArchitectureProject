@@ -6,11 +6,13 @@ import com.example.demo_hexagonal_architecture.application.dao.MovieDAO;
 import com.example.demo_hexagonal_architecture.application.dto.NewMovieDto;
 import com.example.demo_hexagonal_architecture.domain.Movie;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
+@Component
 public class MoviesDaoAdapter implements MovieDAO {
 
     private final MoviesRepository moviesRepository;
