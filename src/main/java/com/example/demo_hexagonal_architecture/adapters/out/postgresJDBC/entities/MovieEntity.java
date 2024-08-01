@@ -6,7 +6,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDate;
 
-@Table(name = "movies", )
+@Table(name = "movies")
 public record MovieEntity(
 
         @Id
@@ -17,6 +17,6 @@ public record MovieEntity(
         String diretorName,
 
         @Version
-        Integer version;
+        Integer version
 ) {
 }
